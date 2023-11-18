@@ -1,7 +1,9 @@
 # Jarkom Modul 3
-Anggota Kelompok :
-- Oktavia Anggraeni P. (5027211001)
-- Brigita Naraduhita P.P. (5027211055)
+
+|    Anggota Kelompok     |     NRP     |
+| ---                     | ---         |
+| Oktavia Anggraeni P.    | 5027211001  |
+| Brigita Naraduhita P.P. | 5027211055  |
 
 ## Daftar Isi
 - [Soal 0](#0)
