@@ -170,7 +170,7 @@ service isc-dhcp-relay restart
 ```
 - Ketika menjalankan aura maka masukkan IP himmel (10.71.1.2) --> `eth1 eth2 eth3 eth4`
 
-<img width="400" alt="Aura_1" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/7913f6d1-337d-4a7f-9b47-e02fc0bf72ba">
+<img width="500" alt="Aura_1" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/7913f6d1-337d-4a7f-9b47-e02fc0bf72ba">
 
 **Himmel**
 - Setting nameserver dengan `echo "nameserver 192.168.122.1" > /etc/resolv.conf`
@@ -254,7 +254,7 @@ $TTL    604800
 Lakukan testing menggunakan ping pada client
 - ping riegel.canyon.IT15.com
 
-<img width="400" alt="No_1B" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/ceaa84d7-eb94-4cc3-b7be-0e45367d0991">
+<img width="500" alt="No_1B" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/ceaa84d7-eb94-4cc3-b7be-0e45367d0991">
 
 ## <a name="1"></a> Soal 1
 **Deskripsi:** Melakukan konfigurasi sesuai dengan peta yang sudah diberikan. (telah dijelaskan di <a name="Configure"></a> Configure)
@@ -306,6 +306,7 @@ subnet 10.71.4.0 netmask 255.255.255.0 {
 
 ### Testing
 Lakukan testing pada client dengan command `ip a`
+
 **Clinet pada Switch3**
 
 <img width="400" alt="No_2A" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/15d310c8-d7ec-4f47-99ec-dc1de87abf3e">
@@ -318,6 +319,7 @@ Lakukan testing pada client dengan command `ip a`
 **Deskripsi:**  Client mendapatkan DNS dari Heiter dan dapat terhubung dengan internet melalui DNS tersebut.
 
 - Mencoba `ping google.com` pada client
+- 
 **Clinet pada Switch3**
   
 <img width="400" alt="No_4" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/8d4c6014-a26d-43c7-b016-fd3c89fb3a7e">
@@ -358,6 +360,7 @@ subnet 10.71.4.0 netmask 255.255.255.0 {
 
 ### Testing
 Melakukan ping google pada client
+
 **Clinet pada Switch3**
 
 <img width="400" alt="No_5-Client1" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/d926fe08-eba9-4893-b80f-cf54f2923984">
