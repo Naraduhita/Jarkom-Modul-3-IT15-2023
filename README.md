@@ -30,7 +30,7 @@
 
 
 ## Topologi
-<img src="">
+<img width="600" alt="Topologi" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/0acb8895-f2b7-4862-b7c9-6af87b04db1d">
 
 [Configure](#Configure) 
 - Aura (DHCP Relay): 
@@ -596,7 +596,7 @@ echo '
 ab -n 100 -c 10 -p login.json -T application/json http://10.71.4.1:8001/api/auth/ogin
 ```
 
-<img src="">
+<img width="400" alt="No_16B" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/2ebdc8e8-4654-43c6-be48-463b862f098d">
 
 
 ### <a name="17"></a> Soal 17
@@ -619,8 +619,9 @@ apt-get install jq
 ab -n 100 -c 10 -H "Authorization: Bearer $token" http://10.71.4.1:8001/api/me
 ```
 
-<img src="">
+<img width="500" alt="No_17" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/62bbb7f6-21e2-4cc5-955f-235037e0e28b">
 
+<img width="400" alt="No_17B" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/0df8e6ae-6e57-47b0-b594-ca578363e796">
 
 ### <a name="18"></a> Soal 18
 **Deskripsi:**
@@ -667,11 +668,11 @@ service nginx restart
 ab -n 100 -c 10 -H "Authorization: Bearer $token" http://10.71.4.1:8001/api/me
 ```
 
-<img src="">
+<img width="431" alt="No_18" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/23ffa98e-f65e-42fb-bb2d-f08c1d0711a8">
 
 - Menampilkan log pada worker laravel `cat /var/log/nginx/jarkom-deploy_access.log`
-<img src="">
 
+<img width="400" alt="No_18B" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/7abd9c97-bd93-444d-a3bc-4d6b93c2f1b4">
 
 ### <a name="19"></a> Soal 19
 **Deskripsi:**
@@ -752,15 +753,8 @@ service php8.0-fpm restart
 ### Testing
 
 Pada setiap testing lakukan percobaan pada client
-- Testing 1
-<img src="">
 
-
-- Testing 2
-<img src="">
-
-- Testing 3
-<img src="">
+<img width="600" alt="No_19_test1" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/fe41ba67-5c8b-4276-9030-449326ef82d4">
 
 
 ### <a name="20"></a> Soal 20
@@ -772,5 +766,6 @@ Pada setiap testing lakukan percobaan pada client
 - Lalu restart nginx `service nginx restart`
 
 ### Testing
-<img src="">
+
+<img width="400" alt="No_20B" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/235ad84f-7d34-4df7-92da-5cc2ff297dc4">
 
