@@ -454,7 +454,7 @@ nameserver 10.71.1.3' > /etc/resolv.conf
 apt-get update
 apt-get install lynx -y
 ```
-## Testing
+### Testing
 - Jalankan command pada `client` menggunakan IP masing-masing worker
 ```
 lynx 10.71.3.1 #lawine
@@ -463,11 +463,13 @@ lynx 10.71.3.3 #lugner
 ```
 
 #### Screenshot:
-Lawine:
+- Lawine:
 <img src="https://i.ibb.co/MkMrQZY/6-riegel-lawine.png">
-Linie:
+
+- Linie:
 <img src="https://i.ibb.co/NLwwq36/6-riegel-linie.png">
-Lugner:
+
+- Lugner:
 <img src="https://i.ibb.co/NsHpgP0/6-riegel-lugner.png">
 
 ## <a name="7"></a> Soal 7
