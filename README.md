@@ -30,7 +30,10 @@
 
 
 ## Topologi
-<img width="800" alt="Topologi" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/0acb8895-f2b7-4862-b7c9-6af87b04db1d">
+
+<p align="center">
+  <img width="800" alt="Topologi" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/0acb8895-f2b7-4862-b7c9-6af87b04db1d">
+</p>
 
 [Configure](#Configure) 
 - Aura (DHCP Relay): 
@@ -292,7 +295,7 @@ Lakukan testing pada client dengan command `ip a`
 
 <img width="400" alt="No_2B" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/5ed3c837-8db2-4364-98a5-dca954d179a9">
 
-### <a name="3"></a> Soal 3
+## <a name="3"></a> Soal 3
 **Deskripsi:** 
 Client yang melalui Switch4 mendapatkan range IP dari 10.71.4.12 - 10.71.4.20 dan 10.71.4.160 - 10.71.4.168
 
@@ -313,7 +316,7 @@ subnet 10.71.4.0 netmask 255.255.255.0 {
 ```
 - Melakukan restart server DHCP `service isc-dhcp-server restart`
 
-### <a name="4"></a> Soal 4
+## <a name="4"></a> Soal 4
 **Deskripsi:**  Client mendapatkan DNS dari Heiter dan dapat terhubung dengan internet melalui DNS tersebut.
 
 - Mencoba `ping google.com` pada client
@@ -326,7 +329,7 @@ subnet 10.71.4.0 netmask 255.255.255.0 {
 
 <img width="400" alt="No_4B" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/a9fd44d3-b575-4e70-a280-098710c15a03">
 
-### <a name="5"></a> Soal 5
+## <a name="5"></a> Soal 5
 **Deskripsi:** reverse domain untuk domain utama (abimanyu)
 
 **Himmel**
@@ -367,15 +370,15 @@ Melakukan ping google pada client
 
 <img width="400" alt="No_5-Client2" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/5556fcf5-235a-450c-a70a-7670eca119ec">
 
-### <a name="6"></a> Soal 6
-### <a name="7"></a> Soal 7
-### <a name="8"></a> Soal 8
-### <a name="9"></a> Soal 9
-### <a name="10"></a> Soal 10
-### <a name="11"></a> Soal 11
-### <a name="12"></a> Soal 12
+## <a name="6"></a> Soal 6
+## <a name="7"></a> Soal 7
+## <a name="8"></a> Soal 8
+## <a name="9"></a> Soal 9
+## <a name="10"></a> Soal 10
+## <a name="11"></a> Soal 11
+## <a name="12"></a> Soal 12
 
-### <a name="13"></a> Soal 13
+## <a name="13"></a> Soal 13
 **Deskripsi:***
 Semua data yang diperlukan, diatur pada Denken sebagai database server dan harus dapat diakses oleh Frieren, Flamme, dan Fern.
 
@@ -416,7 +419,7 @@ mariadb --host=10.71.2.2 --port=3306 --user=kelompokIT15 --password
 
 <img width="400" alt="No_13C" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/47806a18-9a46-47d5-b613-7c9849fa60f1">
 
-### <a name="14"></a> Soal 14
+## <a name="14"></a> Soal 14
 **Deskripsi:**
 Frieren, Flamme, dan Fern memiliki Riegel Channel sesuai dengan quest guide berikut. Jangan lupa melakukan instalasi PHP8.0 dan Composer.
 
@@ -540,7 +543,7 @@ lynx localhost:[PORT]
 ```
 <img width="700" alt="No_14G_Hasil" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/220c4d14-8050-4c3d-b04d-572c8554d167">
 
-### <a name="15"></a> Soal 15
+## <a name="15"></a> Soal 15
 **Deskripsi:**
 Riegel Channel memiliki beberapa endpoint yang harus ditesting sebanyak 100 request dengan 10 request/second. Untuk POST /auth/register 
 
@@ -567,9 +570,10 @@ echo '
 ab -n 100 -c 10 -p register.json -T application/json http://10.71.4.1:8001/api/auth/register
 ```
 Terdapat kesalahan dalam mengirimkan 100 permintaan. Ini disebabkan oleh persyaratan keunikan pada tabel pengguna (users), di mana setiap data username yang dimasukkan harus bersifat unik. Akibatnya, hanya satu permintaan yang dapat dijalankan, sementara 99 permintaan lainnya tidak dapat diproses.
-<img src="">
 
-### <a name="16"></a> Soal 16
+<img width="500" alt="No_15B" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/b3543ec6-fae8-43a3-86de-10abafc2b4ac">
+
+## <a name="16"></a> Soal 16
 **Deskripsi:**
 Riegel Channel memiliki beberapa endpoint yang harus ditesting sebanyak 100 request dengan 10 request/second. Untuk POST /auth/login
 
@@ -599,7 +603,7 @@ ab -n 100 -c 10 -p login.json -T application/json http://10.71.4.1:8001/api/auth
 <img width="400" alt="No_16B" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/2ebdc8e8-4654-43c6-be48-463b862f098d">
 
 
-### <a name="17"></a> Soal 17
+## <a name="17"></a> Soal 17
 **Deskripsi:**
 Riegel Channel memiliki beberapa endpoint yang harus ditesting sebanyak 100 request dengan 10 request/second. Untuk GET /me
 
@@ -623,7 +627,7 @@ ab -n 100 -c 10 -H "Authorization: Bearer $token" http://10.71.4.1:8001/api/me
 
 <img width="400" alt="No_17B" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/0df8e6ae-6e57-47b0-b594-ca578363e796">
 
-### <a name="18"></a> Soal 18
+## <a name="18"></a> Soal 18
 **Deskripsi:**
 Mengimplementasikan Proxy Bind pada Eisen untuk mengaitkan IP dari Frieren, Flamme, dan Fern. Dilakukan konfigurasi pada Load Balancer (Eisen).
 
@@ -674,7 +678,7 @@ ab -n 100 -c 10 -H "Authorization: Bearer $token" http://10.71.4.1:8001/api/me
 
 <img width="400" alt="No_18B" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/7abd9c97-bd93-444d-a3bc-4d6b93c2f1b4">
 
-### <a name="19"></a> Soal 19
+## <a name="19"></a> Soal 19
 **Deskripsi:**
 Melakukan tersting pada:
 - pm.max_children: Menentukan jumlah maksimal proses anak (child processes) yang dapat dihasilkan oleh PHP-FPM. 
@@ -757,7 +761,7 @@ Pada setiap testing lakukan percobaan pada client
 <img width="600" alt="No_19_test1" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/fe41ba67-5c8b-4276-9030-449326ef82d4">
 
 
-### <a name="20"></a> Soal 20
+## <a name="20"></a> Soal 20
 **Deskripsi:**
 
 **Eisen**
