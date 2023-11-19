@@ -443,7 +443,7 @@ service php7.3-fpm start
 service php7.3-fpm status
 ```
 
-**Client, misalnya pada `Richter`**
+**Masuk ke `client`, misalnya pada `Richter`**
 - Setup dasar IP pada client agar terhubung dengan DNS Server
 ```
 echo 'nameserver 192.168.122.1
@@ -463,18 +463,397 @@ lynx 10.71.3.3 #lugner
 ```
 
 #### Screenshot:
-- Lawine:
+Lawine:
 <img src="https://i.ibb.co/MkMrQZY/6-riegel-lawine.png">
-- Linie:
+Linie:
 <img src="https://i.ibb.co/NLwwq36/6-riegel-linie.png">
-- Lugner:
+Lugner:
 <img src="https://i.ibb.co/NsHpgP0/6-riegel-lugner.png">
-<br>
 
 ## <a name="7"></a> Soal 7
+**Deskripsi:**: <br>
+Kepala suku dari Bredt Region memberikan resource server sebagai berikut:
+a.	Lawine, 4GB, 2vCPU, dan 80 GB SSD.
+b.	Linie, 2GB, 2vCPU, dan 50 GB SSD.
+c.	Lugner 1GB, 1vCPU, dan 25 GB SSD.
+aturlah agar Eisen dapat bekerja dengan maksimal, lalu lakukan testing dengan 1000 request dan 100 request/second.
+
+- Buka kembali setting DNS-server dan arahkan ke IP Load Balancer `Eisen`
+```
+echo '
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     riegel.canyon.IT15.com. root.riegel.canyon.IT15.com. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      riegel.canyon.IT15.com.
+@       IN      A       10.71.2.3 ;IP Eisen
+@       IN      AAAA    ::1
+' > /etc/bind/jarkom/riegel.canyon.IT15.com
+
+echo '
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     granz.channel.IT15.com. root.granz.channel.IT15.com. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache $;
+@       IN      NS      granz.channel.IT15.com.
+@       IN      A       10.71.2.3 ;IP Eisen
+@       IN      AAAA    ::1
+' > /etc/bind/jarkom/granz.channel.IT15.com
+```
+**Eisen**
+- Instalasi dan setup 
+```
+apt-get update && apt install nginx php php-fpm -y
+
+apt-get install lynx -y
+```
+
+- Melakukan konfigurasi nginx pada `/etc/nginx/sites-available/lb-jarkom` 
+```
+echo 'upstream backend  {  
+    server 10.71.3.1; # lawine
+    server 10.71.3.2; # linie
+    server 10.71.3.3; # lugner
+}
+
+server {
+    listen 80;
+    server_name riegel.canyon.IT15.com;
+
+    location / {
+        proxy_pass http://backend;
+        proxy_set_header    X-Real-IP $remote_addr;
+        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header    Host $http_host;
+        }
+}' > /etc/nginx/sites-available/lb-jarkom
+
+ln -s /etc/nginx/sites-available/lb-jarkom /etc/nginx/sites-enabled
+
+rm -r /etc/nginx/sites-enabled/default
+
+service nginx restart
+```
+
+**Masuk ke client misalnya `Richter`**
+```
+apt-get install apache2-utils -y
+ab -n 1000 -c 100 http://riegel.canyon.IT15.com/
+```
+atau 
+```
+ab -n 1000 -c 100 http://10.71.2.3/
+```
+#### Screenshot:
+- Brenchmarking hingga 1000 request
+<img src="https://i.ibb.co/hdLxwdN/7-riegel-1000-100.png">
+- Persentase request dan waktu
+<img src="https://i.ibb.co/r4MkDNQ/7-riegel-request-precentage.png">
+
 ## <a name="8"></a> Soal 8
+**Deskripsi:**:<br>
+Karena diminta untuk menuliskan grimoire, buat analisis hasil testing dengan 200 request dan 10 request/second masing-masing algoritma Load Balancer dengan ketentuan sebagai berikut:
+- Nama Algoritma Load Balancer
+- Report hasil testing pada Apache Benchmark
+- Grafik request per second untuk masing masing algoritma. 
+- Analisis
+
+- Algoritma yang akan diterapkan
+`Round Robin`, `Weighted Round Robin` `Least Connection` `IP Hash` dan `Generic Hash`
+
+- Instalasi pada worker dan client
+```
+apt-get install apache2-utils -y
+apt-get install htop -y
+```
+1. Round Robin
+```
+echo 'upstream backend  {  
+    server 10.71.3.1; # lawine
+    server 10.71.3.2; # linie
+    server 10.71.3.3; # lugner
+}
+
+server {
+    listen 80;
+    server_name riegel.canyon.IT15.com;
+
+    location / {
+        proxy_pass http://backend;
+        proxy_set_header    X-Real-IP $remote_addr;
+        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header    Host $http_host;
+        }
+}' > /etc/nginx/sites-available/lb-jarkom
+
+ln -s /etc/nginx/sites-available/lb-jarkom /etc/nginx/sites-enabled
+
+rm -r /etc/nginx/sites-enabled/default
+
+service nginx restart
+```
+
+#### Jalankan command berikut pada `client`, contohnya Richter
+```
+cat /var/log/nginx/access.log| grep "GET" | wc -l
+cat /var/log/nginx/riegel.canyon.IT15_access.log| grep "GET" | wc -l
+ab -n 200 -c 10 http://riegel.canyon.IT15.com/
+```
+#### Screenshot:
+- Tampilan jumlah GET yang diperoleh dalam proses algoritma
+<img src="https://i.ibb.co/r23gCQt/round-robbin-get.png">
+- Hasil HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner
+<img src="https://i.ibb.co/kqYJPPk/round-robbin-htop.png">
+
+2. Weighted Round-Robin
+```
+echo 'upstream backend  {  
+    server 10.71.3.1 weight=4; # lawine
+    server 10.71.3.2 weight=2; # linie
+    server 10.71.3.3 weight=1; # lugner
+}
+
+server {
+    listen 80;
+    server_name riegel.canyon.IT15.com;
+
+    location / {
+        proxy_pass http://backend;
+        proxy_set_header    X-Real-IP $remote_addr;
+        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header    Host $http_host;
+        }
+}' > /etc/nginx/sites-available/lb-jarkom
+ln -s /etc/nginx/sites-available/lb-jarkom /etc/nginx/sites-enabled
+
+rm -r /etc/nginx/sites-enabled/default
+
+service nginx restart
+```
+
+#### Jalankan command berikut pada `client`, contohnya Richter
+```
+cat /var/log/nginx/access.log| grep "GET" | wc -l
+cat /var/log/nginx/riegel.canyon.IT15_access.log| grep "GET" | wc -l
+ab -n 200 -c 10 http://riegel.canyon.IT15.com/
+```
+#### Screenshot:
+- Tampilan jumlah GET yang diperoleh dalam proses algoritma
+<img src="https://i.ibb.co/kKDmxT1/weighted-roundrobin-get.png">
+- Hasil HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner
+<img src="https://i.ibb.co/DGKZBL2/weighted-roundrobin-htop.png">
+
+3. Least Connection
+```
+echo 'upstream backend  {  
+    least_conn;
+    server 10.71.3.1; # lawine
+    server 10.71.3.2; # linie
+    server 10.71.3.3; # lugner
+}
+
+server {
+    listen 80;
+    server_name riegel.canyon.IT15.com;
+
+    location / {
+        proxy_pass http://backend;
+        proxy_set_header    X-Real-IP $remote_addr;
+        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header    Host $http_host;
+        }
+}' > /etc/nginx/sites-available/lb-jarkom
+
+ln -s /etc/nginx/sites-available/lb-jarkom /etc/nginx/sites-enabled
+
+rm -r /etc/nginx/sites-enabled/default
+
+service nginx restart
+```
+#### Jalankan command berikut pada `client`, contohnya Richter
+```
+cat /var/log/nginx/access.log| grep "GET" | wc -l
+cat /var/log/nginx/riegel.canyon.IT15_access.log| grep "GET" | wc -l
+ab -n 200 -c 10 http://riegel.canyon.IT15.com/
+```
+#### Screenshot:
+- Tampilan jumlah GET yang diperoleh dalam proses algoritma
+<img src="https://i.ibb.co/JkWPKym/least-conn-get.png">
+- Hasil HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner
+<img src="https://i.ibb.co/QQDwJyZ/least-conn-htop.png">
+
+4. IP Hash
+```
+echo 'upstream backend  {  
+    ip_hash;
+    server 10.71.3.1; # lawine
+    server 10.71.3.2; # linie
+    server 10.71.3.3; # lugner
+}
+
+server {
+    listen 80;
+    server_name riegel.canyon.IT15.com;
+
+    location / {
+        proxy_pass http://backend;
+        proxy_set_header    X-Real-IP $remote_addr;
+        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header    Host $http_host;
+        }
+}' > /etc/nginx/sites-available/lb-jarkom
+
+ln -s /etc/nginx/sites-available/lb-jarkom /etc/nginx/sites-enabled
+
+rm -r /etc/nginx/sites-enabled/default
+
+service nginx restart
+```
+#### Jalankan command berikut pada `client`, contohnya Richter
+```
+cat /var/log/nginx/access.log| grep "GET" | wc -l
+cat /var/log/nginx/riegel.canyon.IT15_access.log| grep "GET" | wc -l
+ab -n 200 -c 10 http://riegel.canyon.IT15.com/
+```
+#### Screenshot:
+- Tampilan jumlah GET yang diperoleh dalam proses algoritma
+<img src="https://i.ibb.co/PMX63T9/ip-hash-get.png">
+- Hasil HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner
+<img src="https://i.ibb.co/YcBPCyq/ip-hash-htop.png">
+
+5. Generic Hash
+```
+echo 'upstream backend  {  
+    hash $request_uri consistent;
+    server 10.71.3.1; # lawine
+    server 10.71.3.2; # linie
+    server 10.71.3.3; # lugner
+}
+
+server {
+    listen 80;
+    server_name riegel.canyon.IT15.com;
+
+    location / {
+        proxy_pass http://backend;
+        proxy_set_header    X-Real-IP $remote_addr;
+        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header    Host $http_host;
+        }
+}' > /etc/nginx/sites-available/lb-jarkom
+
+ln -s /etc/nginx/sites-available/lb-jarkom /etc/nginx/sites-enabled
+
+rm -r /etc/nginx/sites-enabled/default
+
+service nginx restart
+```
+#### Jalankan command berikut pada `client`, contohnya Richter
+```
+cat /var/log/nginx/access.log| grep "GET" | wc -l
+cat /var/log/nginx/riegel.canyon.IT15_access.log| grep "GET" | wc -l
+ab -n 200 -c 10 http://riegel.canyon.IT15.com/
+```
+#### Screenshot:
+- Tampilan jumlah GET yang diperoleh dalam proses algoritma
+<img src="https://i.ibb.co/9Yh3Zsp/generichash-get.png">
+- Hasil HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner
+<img src="https://i.ibb.co/P98mHng/generichash-htop.png">
+
 ## <a name="9"></a> Soal 9
+**Deskripsi:**: <br>
+Dengan algoritma Round Robin, lakukan testing dengan menggunakan 3 worker, 2 worker, dan 1 worker sebanyak 100 request dengan 10 request/second, kemudian tambahkan grafiknya pada grimoire.
+
+- Ubah kembali isi file `/etc/nginx/sites-available/lb-jarkom` pada `Eisen` untuk Round Robin seperti sebelumnya (#8)
+
+- Jalankan command berikut pada `client`
+```
+ab -n 100 -c 10 http://riegel.canyon.IT15.com/
+```
+- Jalankan htop pada 3 worker
+Screenshot HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner:
+<img src="https://i.ibb.co/Lr7Yf0D/roundrobin-3worker.png">
+
+- Jalankan htop pada 2 worker
+Stop salah satu worker, misalnya Lugner `service nginx stop`
+Screenshot HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner:
+<img src="https://i.ibb.co/jrfCMJg/roundrobin-2worker.png">
+
+- Jalankan htop pada 1 worker
+Stop 1 worker lagi, misalnya Linie `service nginx stop`. Jadi hanya 1 worker yang berjalan, yaitu Lawine
+Screenshot HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner:
+<img src="https://i.ibb.co/Np2bMnm/roundrobin-1worker.png">
+
 ## <a name="10"></a> Soal 10
+**Deskripsi:** <br>
+Tambahkan konfigurasi autentikasi di LB dengan dengan kombinasi username: `netics` dan password: `ajkIT15`. Simpan file “htpasswd” nya di /etc/nginx/rahasisakita/ 
+
+- Lakukan instalasi apache2 pada `Eisen `
+```
+apt-get install apache2-utils -y
+```
+- Buat direktori lalu atur username dan password
+```
+mkdir /etc/nginx/rahasisakita/
+htpasswd -c -b /etc/nginx/rahasisakita/.htpasswd netics ajkIT15
+```
+- Tambahkan konfigurasi `auth_basic` pada `/etc/nginx/sites-available/lb-jarkom`
+```
+echo '
+upstream backend  {
+    server 10.71.3.1; # lawine
+    server 10.71.3.2; # linie
+    server 10.71.3.3; # lugner
+}
+
+server {
+    listen 80;
+    server_name riegel.canyon.IT15.com;
+
+    location / {
+        proxy_pass http://backend;
+        proxy_set_header    X-Real-IP $remote_addr;
+        proxy_set_header    X-Forwarded-For $proxy_add_x_fo$
+        proxy_set_header    Host $http_host;
+        
+        auth_basic "Restricted Area";
+        auth_basic_user_file /etc/nginx/rahasisakita/.htpasswd       
+        }
+}' > /etc/nginx/sites-available/lb-jarkom
+
+unlink /etc/nginx/sites-enabled/lb-jarkom
+
+ln -s /etc/nginx/sites-available/lb-jarkom /etc/nginx/sites-enabled
+
+rm -r /etc/nginx/sites-enabled/default
+
+service nginx restart
+```
+- Jalankan command berikut pada `client`
+```
+lynx riegel.canyon.IT15.com
+```
+#### Screenshot:
+- Tampilan input username
+<img src="https://i.ibb.co/QPvzZ1D/10-tampilan-input-username.png">
+- Tampilan input password
+<img src="https://i.ibb.co/jgYvDrF/10-tampilan-input-password.png">
+- Tampilan saat berhasil masuk
+<img src="https://i.ibb.co/VY3N5jp/10-tampilan-saat-berhasil-masuk.png">
+- Tampilan saat gagal masuk
+<img src="https://i.ibb.co/NjfvWgh/10-tampilan-saat-gagal-masuk.png">
+
 ## <a name="11"></a> Soal 11
 ## <a name="12"></a> Soal 12
 
