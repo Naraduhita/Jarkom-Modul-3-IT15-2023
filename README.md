@@ -26,7 +26,6 @@
 ## Topologi
 <img src="">
 
-## Configure
 ## <a name="21"></a> Configure
 - Aura (DHCP Relay): 
 
