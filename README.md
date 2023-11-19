@@ -167,7 +167,11 @@ apt-get install isc-dhcp-relay -y
 service isc-dhcp-relay start
 echo "net.ipv4.ip_forward=1" > /etc/sysctl.conf
 service isc-dhcp-relay restart
-```							
+```
+- Ketika menjalankan aura maka masukkan IP himmel (10.71.1.2) --> `eth1 eth2 eth3 eth4`
+
+<img width="400" alt="Aura_1" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/7913f6d1-337d-4a7f-9b47-e02fc0bf72ba">
+
 **Himmel**
 - Setting nameserver dengan `echo "nameserver 192.168.122.1" > /etc/resolv.conf`
 - Menjadikan Himmel sebagai DHCP Server
@@ -249,10 +253,8 @@ $TTL    604800
 **Testing**
 Lakukan testing menggunakan ping pada client
 - ping riegel.canyon.IT15.com
-<img src="">
 
-- ping granz.channel.IT15.com
-<img src="">
+<img width="400" alt="No_1B" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/ceaa84d7-eb94-4cc3-b7be-0e45367d0991">
 
 ## <a name="1"></a> Soal 1
 **Deskripsi:** Melakukan konfigurasi sesuai dengan peta yang sudah diberikan. (telah dijelaskan di <a name="Configure"></a> Configure)
@@ -279,7 +281,7 @@ subnet 10.71.3.0 netmask 255.255.255.0 {
 
 **Testing**
 Lakukan testing pada client dengan command `ip a`
-<img src="">
+- Switche
 
 ### <a name="3"></a> Soal 3
 **Deskripsi:** 
@@ -305,20 +307,24 @@ subnet 10.71.4.0 netmask 255.255.255.0 {
 ### Testing
 Lakukan testing pada client dengan command `ip a`
 **Clinet pada Switch3**
-<img src="">
+
+<img width="400" alt="No_2A" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/15d310c8-d7ec-4f47-99ec-dc1de87abf3e">
 
 **Clinet pada Switch4**
-<img src="">
+
+<img width="400" alt="No_2B" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/5ed3c837-8db2-4364-98a5-dca954d179a9">
 
 ### <a name="4"></a> Soal 4
 **Deskripsi:**  Client mendapatkan DNS dari Heiter dan dapat terhubung dengan internet melalui DNS tersebut.
 
 - Mencoba `ping google.com` pada client
 **Clinet pada Switch3**
-<img src="">
+  
+<img width="400" alt="No_4" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/8d4c6014-a26d-43c7-b016-fd3c89fb3a7e">
 
 **Clinet pada Switch4**
-<img src="">
+
+<img width="400" alt="No_4B" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/a9fd44d3-b575-4e70-a280-098710c15a03">
 
 ### <a name="5"></a> Soal 5
 **Deskripsi:** reverse domain untuk domain utama (abimanyu)
@@ -353,10 +359,10 @@ subnet 10.71.4.0 netmask 255.255.255.0 {
 ### Testing
 Melakukan ping google pada client
 **Clinet pada Switch3**
-<img src="">
+<img width="400" alt="No_5-Client1" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/d926fe08-eba9-4893-b80f-cf54f2923984">
 
 **Clinet pada Switch4**
-<img src="">
+<img width="400" alt="No_5-Client2" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/5556fcf5-235a-450c-a70a-7670eca119ec">
 
 ### <a name="6"></a> Soal 6
 ### <a name="7"></a> Soal 7
@@ -389,6 +395,9 @@ GRANT ALL PRIVILEGES ON *.* TO 'kelompokIT15'@'localhost';
 FLUSH PRIVILEGES;
 SHOW DATABASES;
 ```
+
+<img width="400" alt="No_13A" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/f89cf471-6842-49c0-9b34-2b6e4912c1dd">
+
 - Lalu restart mysql `service mysql restart`
 
 **Worker Laravel**
@@ -401,8 +410,8 @@ mariadb --host=10.71.2.2 --port=3306 --user=kelompokIT15 --password
 - Jalankan perintah `SHOW DATABASES` untuk menampilkan database yang sudah diinputkan di denken.
 
 ### Testing
-<img src="">
 
+<img width="400" alt="No_13C" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/47806a18-9a46-47d5-b613-7c9849fa60f1">
 
 ### <a name="14"></a> Soal 14
 **Deskripsi:**
@@ -479,6 +488,10 @@ USE dbkelompokIT15;
 SHOW DATABASES;
 ```
 
+<img width="400" alt="No_14C" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/fe1f965f-31ac-4bd7-a4ac-b7d79b34c8f9">
+
+<img width="300" alt="No_14D" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/8f88b4d1-2bbc-4635-b1a9-ab964fdd2a72">
+
 **Worker Laravel**
 - Untuk melakukan deployment pada masing-masing worker, tambahkan virtual host pada file `/etc/nginx/sites-available/jarkom-deploy`
 ```bash
@@ -522,9 +535,7 @@ service php8.0-fpm start
 service nginx start
 lynx localhost:[PORT]
 ```
-<img src="">
-<img src="">
-<img src="">
+<img width="700" alt="No_14G_Hasil" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/220c4d14-8050-4c3d-b04d-572c8554d167">
 
 ### <a name="15"></a> Soal 15
 **Deskripsi:**
