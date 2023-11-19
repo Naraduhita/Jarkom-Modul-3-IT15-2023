@@ -359,9 +359,11 @@ subnet 10.71.4.0 netmask 255.255.255.0 {
 ### Testing
 Melakukan ping google pada client
 **Clinet pada Switch3**
+
 <img width="400" alt="No_5-Client1" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/d926fe08-eba9-4893-b80f-cf54f2923984">
 
 **Clinet pada Switch4**
+
 <img width="400" alt="No_5-Client2" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/5556fcf5-235a-450c-a70a-7670eca119ec">
 
 ### <a name="6"></a> Soal 6
