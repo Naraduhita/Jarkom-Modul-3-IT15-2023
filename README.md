@@ -625,6 +625,7 @@ ab -n 100 -c 10 -H "Authorization: Bearer $token" http://10.71.4.1:8001/api/me
 
 <img width="500" alt="No_17" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/62bbb7f6-21e2-4cc5-955f-235037e0e28b">
 
+
 <img width="400" alt="No_17B" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/0df8e6ae-6e57-47b0-b594-ca578363e796">
 
 ## <a name="18"></a> Soal 18
