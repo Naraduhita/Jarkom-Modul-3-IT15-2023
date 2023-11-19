@@ -557,7 +557,7 @@ ab -n 1000 -c 100 http://10.71.2.3/
 ```
 ### Screenshot
 Brenchmarking hingga 1000 request:
-<img src="https://i.ibb.co/hdLxwdN/7-riegel-1000-100.png">
+<img src="https://i.ibb.co/hdLxwdN/7-riegel-1000-100.png"> <br>
 Persentase request dan waktu:
 <img src="https://i.ibb.co/r4MkDNQ/7-riegel-request-precentage.png">
 
@@ -612,7 +612,7 @@ ab -n 200 -c 10 http://riegel.canyon.IT15.com/
 ```
 ### Screenshot
 Tampilan jumlah GET yang diperoleh dalam proses algoritma:
-<img src="https://i.ibb.co/r23gCQt/round-robbin-get.png">
+<img src="https://i.ibb.co/r23gCQt/round-robbin-get.png"> <br>
 Hasil HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner:
 <img src="https://i.ibb.co/kqYJPPk/round-robbin-htop.png">
 
@@ -650,7 +650,7 @@ ab -n 200 -c 10 http://riegel.canyon.IT15.com/
 ```
 ### Screenshot:
 Tampilan jumlah GET yang diperoleh dalam proses algoritma:
-<img src="https://i.ibb.co/kKDmxT1/weighted-roundrobin-get.png">
+<img src="https://i.ibb.co/kKDmxT1/weighted-roundrobin-get.png"> <br>
 Hasil HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner:
 <img src="https://i.ibb.co/DGKZBL2/weighted-roundrobin-htop.png">
 
@@ -689,7 +689,7 @@ ab -n 200 -c 10 http://riegel.canyon.IT15.com/
 ```
 ### Screenshot:
 Tampilan jumlah GET yang diperoleh dalam proses algoritma:
-<img src="https://i.ibb.co/JkWPKym/least-conn-get.png">
+<img src="https://i.ibb.co/JkWPKym/least-conn-get.png"> <br>
 Hasil HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner:
 <img src="https://i.ibb.co/QQDwJyZ/least-conn-htop.png">
 
@@ -728,7 +728,7 @@ ab -n 200 -c 10 http://riegel.canyon.IT15.com/
 ```
 ### Screenshot:
 Tampilan jumlah GET yang diperoleh dalam proses algoritma:
-<img src="https://i.ibb.co/PMX63T9/ip-hash-get.png">
+<img src="https://i.ibb.co/PMX63T9/ip-hash-get.png"> <br>
 Hasil HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner:
 <img src="https://i.ibb.co/YcBPCyq/ip-hash-htop.png">
 
@@ -767,7 +767,7 @@ ab -n 200 -c 10 http://riegel.canyon.IT15.com/
 ```
 ### Screenshot:
 Tampilan jumlah GET yang diperoleh dalam proses algoritma:
-<img src="https://i.ibb.co/9Yh3Zsp/generichash-get.png">
+<img src="https://i.ibb.co/9Yh3Zsp/generichash-get.png"> <br>
 Hasil HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner:
 <img src="https://i.ibb.co/P98mHng/generichash-htop.png">
 
@@ -846,13 +846,13 @@ lynx riegel.canyon.IT15.com
 ```
 ### Screenshot
 Tampilan input username:
-<img src="https://i.ibb.co/QPvzZ1D/10-tampilan-input-username.png">
+<img src="https://i.ibb.co/QPvzZ1D/10-tampilan-input-username.png"> <br>
 Tampilan input password:
-<img src="https://i.ibb.co/jgYvDrF/10-tampilan-input-password.png">
+<img src="https://i.ibb.co/jgYvDrF/10-tampilan-input-password.png"> <br>
 Tampilan saat berhasil masuk:
-<img src="https://i.ibb.co/VY3N5jp/10-tampilan-saat-berhasil-masuk.png">
+<img src="https://i.ibb.co/VY3N5jp/10-tampilan-saat-berhasil-masuk.png"> <br>
 Tampilan saat gagal masuk:
-<img src="https://i.ibb.co/NjfvWgh/10-tampilan-saat-gagal-masuk.png">
+<img src="https://i.ibb.co/NjfvWgh/10-tampilan-saat-gagal-masuk.png"> <br>
 
 ## <a name="11"></a> Soal 11
 **Deskripsi:** <br>
@@ -906,9 +906,9 @@ lynx riegel.canyon.IT15.com/its
 Tampak bahwa cara menjalankannya agak berbeda karena dengan penambahan `/its` maka akan mengarah ke halaman `https://www.its.ac.id` <br>
 ### Screenshot
 Proses masuk ke halaman its.ac.id:
-<img src="https://i.ibb.co/HVhn7kZ/11-proses-masuk-ke-halaman-its-ac-id.png">
+<img src="https://i.ibb.co/HVhn7kZ/11-proses-masuk-ke-halaman-its-ac-id.png"> <br>
 Tampilan halaman home its.ac.id:
-<img src="https://i.ibb.co/QQCHRCg/11-tampilan-halaman-its-ac-id.png">
+<img src="https://i.ibb.co/QQCHRCg/11-tampilan-halaman-its-ac-id.png"> <br>
 Teks berhighlight pada halaman juga dapat di klik:
 <img src="https://i.ibb.co/KbV2G1s/11-dapat-juga-mengklik-text-yang-diinginkan-seperti-pada-website.png">
 
