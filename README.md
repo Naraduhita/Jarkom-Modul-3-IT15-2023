@@ -241,7 +241,7 @@ Lakukan testing menggunakan ping pada client
 <img src="">
 
 ## <a name="1"></a> Soal 1
-**Deskripsi:** Melakukan konfigurasi sesuai dengan peta yang sudah diberikan. (telah dijelaskan di <a name="Configure"></a> Configure)
+**Deskripsi:** Melakukan konfigurasi sesuai dengan peta yang sudah diberikan. (telah dijelaskan di <a name="#Configure"></a> Configure)
 
 ## <a name="2"></a> Soal 2
 **Deskripsi:** Client yang melalui Switch3 mendapatkan range IP dari 10.71.3.16 - 10.71.3.32 dan 10.71.3.64 - 10.71.3.80 
