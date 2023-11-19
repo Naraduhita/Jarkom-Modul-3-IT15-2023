@@ -168,7 +168,7 @@ service isc-dhcp-relay start
 echo "net.ipv4.ip_forward=1" > /etc/sysctl.conf
 service isc-dhcp-relay restart
 ```
-- Ketika menjalankan aura maka masukkan IP himmel (10.71.1.2) --> `eth1 eth2 eth3 eth4`
+- Ketika menjalankan aura maka masukkan IP himmel `10.71.1.2` --> `eth1 eth2 eth3 eth4`
 
 <img width="500" alt="Aura_1" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/7913f6d1-337d-4a7f-9b47-e02fc0bf72ba">
 
@@ -251,6 +251,7 @@ $TTL    604800
 @       IN      AAAA    ::1
 ```
 **Testing**
+
 Lakukan testing menggunakan ping pada client
 - ping riegel.canyon.IT15.com
 
@@ -280,8 +281,16 @@ subnet 10.71.3.0 netmask 255.255.255.0 {
 - Melakukan restart server DHCP `service isc-dhcp-server restart`
 
 **Testing**
+
 Lakukan testing pada client dengan command `ip a`
-- Switche
+
+**Clinet pada Switch3**
+
+<img width="400" alt="No_2A" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/15d310c8-d7ec-4f47-99ec-dc1de87abf3e">
+
+**Clinet pada Switch4**
+
+<img width="400" alt="No_2B" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/5ed3c837-8db2-4364-98a5-dca954d179a9">
 
 ### <a name="3"></a> Soal 3
 **Deskripsi:** 
@@ -303,17 +312,6 @@ subnet 10.71.4.0 netmask 255.255.255.0 {
 }
 ```
 - Melakukan restart server DHCP `service isc-dhcp-server restart`
-
-### Testing
-Lakukan testing pada client dengan command `ip a`
-
-**Clinet pada Switch3**
-
-<img width="400" alt="No_2A" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/15d310c8-d7ec-4f47-99ec-dc1de87abf3e">
-
-**Clinet pada Switch4**
-
-<img width="400" alt="No_2B" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/5ed3c837-8db2-4364-98a5-dca954d179a9">
 
 ### <a name="4"></a> Soal 4
 **Deskripsi:**  Client mendapatkan DNS dari Heiter dan dapat terhubung dengan internet melalui DNS tersebut.
