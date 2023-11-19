@@ -317,7 +317,7 @@ subnet 10.71.4.0 netmask 255.255.255.0 {
 **Deskripsi:**  Client mendapatkan DNS dari Heiter dan dapat terhubung dengan internet melalui DNS tersebut.
 
 - Mencoba `ping google.com` pada client
-- 
+  
 **Clinet pada Switch3**
   
 <img width="400" alt="No_4" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/8d4c6014-a26d-43c7-b016-fd3c89fb3a7e">
