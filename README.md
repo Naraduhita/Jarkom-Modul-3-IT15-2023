@@ -262,7 +262,7 @@ Lakukan testing menggunakan ping pada client
 
 ## <a name="1"></a> Soal 1
 **Deskripsi:** Melakukan konfigurasi sesuai dengan peta yang sudah diberikan. (telah dijelaskan di <a name="Configure"></a> Configure)
-
+<br>
 ## <a name="2"></a> Soal 2
 **Deskripsi:** Client yang melalui Switch3 mendapatkan range IP dari 10.71.3.16 - 10.71.3.32 dan 10.71.3.64 - 10.71.3.80 
 
@@ -315,6 +315,7 @@ subnet 10.71.4.0 netmask 255.255.255.0 {
 }
 ```
 - Melakukan restart server DHCP `service isc-dhcp-server restart`
+<br>
 
 ## <a name="4"></a> Soal 4
 **Deskripsi:**  Client mendapatkan DNS dari Heiter dan dapat terhubung dengan internet melalui DNS tersebut.
@@ -371,6 +372,105 @@ Melakukan ping google pada client
 <img width="400" alt="No_5-Client2" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/5556fcf5-235a-450c-a70a-7670eca119ec">
 
 ## <a name="6"></a> Soal 6
+**Deskripsi:** <br> 
+Konfigurasi virtual host untuk website dari link zip dengan menggunakan php 7.3
+
+**Worker PHP (Lawine, Linie, Lugner)**
+- Pertama perlu dilakukan setup dasar IP pada `/etc/resolv.conf` agar terhubung dengan DNS Server
+```
+echo 'nameserver 192.168.122.1
+nameserver 10.71.1.3' > /etc/resolv.conf
+```
+- Lakukan instalasi nginx, php 7.3, lynx, dan unzip yang dibutuhkan dalam pengerjaannya
+```
+apt-get update && apt install nginx php php-fpm -y
+php -v
+
+apt-get install lynx -y
+
+apt-get install unzip -y
+```
+
+- Download dan setup resource yang diberikan
+```
+cd /var/www/
+
+curl -L --insecure "https://drive.google.com/uc?export=download&id=1ViSkRq7SmwZgdK64eRbr5Fm1EGCTPrU1" -o riegel
+
+unzip riegel -d riegel.canyon.IT15
+mv riegel.canyon.IT15/modul-3/* riegel.canyon.IT15
+rm -r riegel 
+```
+
+- Melakukan konfigurasi pada `/etc/nginx/sites-available/riegel.canyon.IT15` dan membuat symlink sebagai berikut
+```
+echo '
+server {
+    listen 80;
+
+    root /var/www/riegel.canyon.IT15;
+    index index.php index.html index.htm;
+    server_name _;
+
+    location / {
+            try_files $uri $uri/ /index.php?$query_string;
+        }
+
+    # pass PHP scripts to FastCGI server
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/var/run/php/php7.3-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+
+ }' > /etc/nginx/sites-available/riegel.canyon.IT15
+
+ln -s /etc/nginx/sites-available/riegel.canyon.IT15 /etc/nginx/sites-enabled
+
+rm -r /etc/nginx/sites-enabled/default
+```
+
+- Restart nginx dan php 7.3 
+```
+service nginx restart
+nginx -t
+service php7.3-fpm start
+service php7.3-fpm status
+```
+
+**Client, misalnya pada `Richter`**
+- Setup dasar IP pada client agar terhubung dengan DNS Server
+```
+echo 'nameserver 192.168.122.1
+nameserver 10.71.1.3' > /etc/resolv.conf
+```
+- Instalasi lynx
+```
+apt-get update
+apt-get install lynx -y
+```
+## Testing
+- Jalankan command pada `client` menggunakan IP masing-masing worker
+```
+lynx 10.71.3.1 #lawine
+lynx 10.71.3.2 #linie
+lynx 10.71.3.3 #lugner
+```
+
+#### Screenshot:
+- Lawine:
+<img src="https://i.ibb.co/MkMrQZY/6-riegel-lawine.png">
+- Linie:
+<img src="https://i.ibb.co/NLwwq36/6-riegel-linie.png">
+- Lugner:
+<img src="https://i.ibb.co/NsHpgP0/6-riegel-lugner.png">
+<br>
+
 ## <a name="7"></a> Soal 7
 ## <a name="8"></a> Soal 8
 ## <a name="9"></a> Soal 9
