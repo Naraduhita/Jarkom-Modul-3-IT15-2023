@@ -555,10 +555,10 @@ atau
 ```
 ab -n 1000 -c 100 http://10.71.2.3/
 ```
-#### Screenshot:
-- Brenchmarking hingga 1000 request
+### Screenshot
+Brenchmarking hingga 1000 request:
 <img src="https://i.ibb.co/hdLxwdN/7-riegel-1000-100.png">
-- Persentase request dan waktu
+Persentase request dan waktu:
 <img src="https://i.ibb.co/r4MkDNQ/7-riegel-request-precentage.png">
 
 ## <a name="8"></a> Soal 8
@@ -610,10 +610,10 @@ cat /var/log/nginx/access.log| grep "GET" | wc -l
 cat /var/log/nginx/riegel.canyon.IT15_access.log| grep "GET" | wc -l
 ab -n 200 -c 10 http://riegel.canyon.IT15.com/
 ```
-#### Screenshot:
-- Tampilan jumlah GET yang diperoleh dalam proses algoritma
+### Screenshot
+Tampilan jumlah GET yang diperoleh dalam proses algoritma:
 <img src="https://i.ibb.co/r23gCQt/round-robbin-get.png">
-- Hasil HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner
+Hasil HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner:
 <img src="https://i.ibb.co/kqYJPPk/round-robbin-htop.png">
 
 2. Weighted Round-Robin
@@ -648,10 +648,10 @@ cat /var/log/nginx/access.log| grep "GET" | wc -l
 cat /var/log/nginx/riegel.canyon.IT15_access.log| grep "GET" | wc -l
 ab -n 200 -c 10 http://riegel.canyon.IT15.com/
 ```
-#### Screenshot:
-- Tampilan jumlah GET yang diperoleh dalam proses algoritma
+### Screenshot:
+Tampilan jumlah GET yang diperoleh dalam proses algoritma:
 <img src="https://i.ibb.co/kKDmxT1/weighted-roundrobin-get.png">
-- Hasil HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner
+Hasil HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner:
 <img src="https://i.ibb.co/DGKZBL2/weighted-roundrobin-htop.png">
 
 3. Least Connection
@@ -687,10 +687,10 @@ cat /var/log/nginx/access.log| grep "GET" | wc -l
 cat /var/log/nginx/riegel.canyon.IT15_access.log| grep "GET" | wc -l
 ab -n 200 -c 10 http://riegel.canyon.IT15.com/
 ```
-#### Screenshot:
-- Tampilan jumlah GET yang diperoleh dalam proses algoritma
+### Screenshot:
+Tampilan jumlah GET yang diperoleh dalam proses algoritma:
 <img src="https://i.ibb.co/JkWPKym/least-conn-get.png">
-- Hasil HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner
+Hasil HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner:
 <img src="https://i.ibb.co/QQDwJyZ/least-conn-htop.png">
 
 4. IP Hash
@@ -726,10 +726,10 @@ cat /var/log/nginx/access.log| grep "GET" | wc -l
 cat /var/log/nginx/riegel.canyon.IT15_access.log| grep "GET" | wc -l
 ab -n 200 -c 10 http://riegel.canyon.IT15.com/
 ```
-#### Screenshot:
-- Tampilan jumlah GET yang diperoleh dalam proses algoritma
+### Screenshot:
+Tampilan jumlah GET yang diperoleh dalam proses algoritma:
 <img src="https://i.ibb.co/PMX63T9/ip-hash-get.png">
-- Hasil HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner
+Hasil HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner:
 <img src="https://i.ibb.co/YcBPCyq/ip-hash-htop.png">
 
 5. Generic Hash
@@ -765,17 +765,17 @@ cat /var/log/nginx/access.log| grep "GET" | wc -l
 cat /var/log/nginx/riegel.canyon.IT15_access.log| grep "GET" | wc -l
 ab -n 200 -c 10 http://riegel.canyon.IT15.com/
 ```
-#### Screenshot:
-- Tampilan jumlah GET yang diperoleh dalam proses algoritma
+### Screenshot:
+Tampilan jumlah GET yang diperoleh dalam proses algoritma:
 <img src="https://i.ibb.co/9Yh3Zsp/generichash-get.png">
-- Hasil HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner
+Hasil HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner:
 <img src="https://i.ibb.co/P98mHng/generichash-htop.png">
 
 ## <a name="9"></a> Soal 9
 **Deskripsi:**: <br>
 Dengan algoritma Round Robin, lakukan testing dengan menggunakan 3 worker, 2 worker, dan 1 worker sebanyak 100 request dengan 10 request/second, kemudian tambahkan grafiknya pada grimoire.
 
-- Ubah kembali isi file `/etc/nginx/sites-available/lb-jarkom` pada `Eisen` untuk Round Robin seperti sebelumnya (#8)
+- Ubah kembali isi file `/etc/nginx/sites-available/lb-jarkom` pada `Eisen` untuk Round Robin seperti pada soal no. 8 sebelumnya
 
 - Jalankan command berikut pada `client`
 ```
@@ -844,18 +844,149 @@ service nginx restart
 ```
 lynx riegel.canyon.IT15.com
 ```
-#### Screenshot:
-- Tampilan input username
+### Screenshot
+Tampilan input username:
 <img src="https://i.ibb.co/QPvzZ1D/10-tampilan-input-username.png">
-- Tampilan input password
+Tampilan input password:
 <img src="https://i.ibb.co/jgYvDrF/10-tampilan-input-password.png">
-- Tampilan saat berhasil masuk
+Tampilan saat berhasil masuk:
 <img src="https://i.ibb.co/VY3N5jp/10-tampilan-saat-berhasil-masuk.png">
-- Tampilan saat gagal masuk
+Tampilan saat gagal masuk:
 <img src="https://i.ibb.co/NjfvWgh/10-tampilan-saat-gagal-masuk.png">
 
 ## <a name="11"></a> Soal 11
+**Deskripsi:** <br>
+Buat untuk setiap request yang mengandung /its akan di proxy passing menuju halaman https://www.its.ac.id `hint: (proxy_pass)`
+
+- Lanjutkan no. 10 sebelumnya dengan menambahkan `proxy_pass` pada `/etc/nginx/sites-available/lb-jarkom`
+```
+echo '
+upstream backend  {
+    server 10.71.3.1; # lawine
+    server 10.71.3.2; # linie
+    server 10.71.3.3; # lugner
+}
+
+server {
+    listen 80;
+    server_name riegel.canyon.IT15.com;
+
+    location / {
+        proxy_pass http://backend;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        
+        auth_basic "Restricted Area";
+        auth_basic_user_file /etc/nginx/rahasisakita/.htpasswd;       
+    }
+    
+    location ~ /its {
+        proxy_pass https://www.its.ac.id;
+        proxy_set_header Host www.its.ac.id;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}' > /etc/nginx/sites-available/lb-jarkom
+
+unlink /etc/nginx/sites-enabled/lb-jarkom
+
+ln -s /etc/nginx/sites-available/lb-jarkom /etc/nginx/sites-enabled
+
+rm -r /etc/nginx/sites-enabled/default
+
+service nginx restart
+```
+
+- Jalankan command berikut pada `client`
+```
+lynx riegel.canyon.IT15.com/its
+```
+Tampak bahwa cara menjalankannya agak berbeda karena dengan penambahan `/its` maka akan mengarah ke halaman `https://www.its.ac.id` <br>
+### Screenshot
+Proses masuk ke halaman its.ac.id:
+<img src="https://i.ibb.co/HVhn7kZ/11-proses-masuk-ke-halaman-its-ac-id.png">
+Tampilan halaman home its.ac.id:
+<img src="https://i.ibb.co/QQCHRCg/11-tampilan-halaman-its-ac-id.png">
+Teks berhighlight pada halaman juga dapat di klik:
+<img src="https://i.ibb.co/KbV2G1s/11-dapat-juga-mengklik-text-yang-diinginkan-seperti-pada-website.png">
+
 ## <a name="12"></a> Soal 12
+**Deskripsi:**
+Selanjutnya LB hanya boleh diakses oleh client dengan IP [Prefix IP].3.69, [Prefix IP].3.70, [Prefix IP].4.167, dan [Prefix IP].4.168
+
+- Untuk membatasi akses, tambahkan code `allow IP` pada LB `Eisen` bagian `location /`
+```
+echo '
+upstream backend  {
+    server 10.71.3.1; # lawine
+    server 10.71.3.2; # linie
+    server 10.71.3.3; # lugner
+}
+
+server {
+    listen 80;
+    server_name riegel.canyon.IT15.com;
+
+    location / {
+        proxy_pass http://backend;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        
+        auth_basic "Restricted Area";
+        auth_basic_user_file /etc/nginx/rahasisakita/.htpasswd;  
+
+#tambahkan kode berikut
+        allow 10.71.3.69;
+        allow 10.71.3.70;
+        allow 10.71.4.167;
+        allow 10.71.4.168;
+        deny all;     
+    }
+    
+    location ~ /its {
+        proxy_pass https://www.its.ac.id;
+        proxy_set_header Host www.its.ac.id;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}' > /etc/nginx/sites-available/lb-jarkom
+
+unlink /etc/nginx/sites-enabled/lb-jarkom
+
+ln -s /etc/nginx/sites-available/lb-jarkom /etc/nginx/sites-enabled
+
+rm -r /etc/nginx/sites-enabled/default
+
+service nginx restart
+```
+
+- Jalankan command `ip a` pada client dan lihat pada hardware ethernet eth0.
+
+- Masuk ke `Himmel` DHCP Sever dan tambahkan script berikut pada `/etc/dhcp/dhcpd.conf`
+```
+host Richter {
+    hardware ethernet da:80:6f:3f:4b:9c;
+    fixed-address 10.71.3.69;
+    option host-name \"Richter"\;
+}
+```
+- Kemudian restart dhcp sebagai berikut
+```
+service isc-dhcp-server restart
+```
+
+- Masuk kembali ke `client` kemudian tambahkan konfigurasi pada `/etc/network/interfaces`
+```
+echo '
+auto eth0
+iface eth0 inet dhcp
+hwaddress ether da:80:6f:3f:4b:9c
+' > /etc/network/interfaces
+```
 
 ## <a name="13"></a> Soal 13
 **Deskripsi:***
