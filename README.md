@@ -1184,9 +1184,8 @@ lynx localhost:[PORT]
 **Deskripsi:**
 Riegel Channel memiliki beberapa endpoint yang harus ditesting sebanyak 100 request dengan 10 request/second. Untuk POST /auth/register 
 
-**Worker Laravel**
+**Client**
 
-Menggunakan worker `Frieren` yang nantikan akan melakukan testing pada client `Revolte`.
 - Lakukan instalasi 
 ```bash
 apt-get update
@@ -1214,9 +1213,8 @@ Terdapat kesalahan dalam mengirimkan 100 permintaan. Ini disebabkan oleh persyar
 **Deskripsi:**
 Riegel Channel memiliki beberapa endpoint yang harus ditesting sebanyak 100 request dengan 10 request/second. Untuk POST /auth/login
 
-**Worker Laravel**
+**Client**
 
-Menggunakan worker `Frieren` yang nantikan akan melakukan testing pada client `Revolte`.
 - Lakukan instalasi 
 ```bash
 apt-get update
@@ -1244,7 +1242,7 @@ ab -n 100 -c 10 -p login.json -T application/json http://10.71.4.1:8001/api/auth
 **Deskripsi:**
 Riegel Channel memiliki beberapa endpoint yang harus ditesting sebanyak 100 request dengan 10 request/second. Untuk GET /me
 
-**Worker Laravel**
+**Client**
 
 Lakukan instalasi 
 ```bash
@@ -1256,6 +1254,7 @@ apt-get install jq
 
 ### Testing
 - Untuk melakukan testing, jalankan command berikut pada `Revolte`:
+  
 ```bash
 ab -n 100 -c 10 -H "Authorization: Bearer $token" http://10.71.4.1:8001/api/me
 ```
