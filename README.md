@@ -1324,7 +1324,7 @@ Melakukan tersting pada:
 - pm.min_spare_servers: Menentukan jumlah minimum proses anak yang akan tetap aktif dan siap menangani permintaan meskipun jumlah permintaan menurun.
 - pm.max_spare_servers: Menentukan jumlah maksimal proses anak yang akan tetap aktif saat permintaan rendah atau tidak ada permintaan.
 
-**Worker Laravel**
+**Client**
 
 Melakukan 3 kali testing:
 
