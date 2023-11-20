@@ -34,7 +34,7 @@
   <img width="800" alt="Topologi" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/0acb8895-f2b7-4862-b7c9-6af87b04db1d">
 </p>
 
-File GNS terdapat pada [Drive berikut]((https://drive.google.com/drive/folders/1_yi2OQCNoKkST78BbAe95Z51Vr4mYK0Y?usp=drive_link)) 
+File GNS terdapat pada [Drive berikut](https://drive.google.com/drive/folders/1_yi2OQCNoKkST78BbAe95Z51Vr4mYK0Y?usp=drive_link) 
 
 [Configure](#Configure) 
 - Aura (DHCP Relay): 
