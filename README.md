@@ -361,7 +361,6 @@ subnet 10.71.4.0 netmask 255.255.255.0 {
 - Melakukan restart server DHCP `service isc-dhcp-server restart`
 
 ### Testing
-Melakukan ping google pada client
 
 **Clinet pada Switch3**
 
