@@ -28,13 +28,13 @@
 - [Soal 19](#19)
 - [Soal 20](#20)
 
+File GNS terdapat pada [Drive berikut](https://drive.google.com/drive/folders/1_yi2OQCNoKkST78BbAe95Z51Vr4mYK0Y?usp=drive_link) 
+
 ## Topologi
 
 <p align="center">
   <img width="800" alt="Topologi" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/0acb8895-f2b7-4862-b7c9-6af87b04db1d">
 </p>
-
-File GNS terdapat pada [Drive berikut](https://drive.google.com/drive/folders/1_yi2OQCNoKkST78BbAe95Z51Vr4mYK0Y?usp=drive_link) 
 
 [Configure](#Configure) 
 - Aura (DHCP Relay): 
@@ -464,13 +464,13 @@ lynx 10.71.3.3 #lugner
 
 #### Screenshot:
 - Lawine:
-<img src="https://i.ibb.co/MkMrQZY/6-riegel-lawine.png">
+<img src="https://i.ibb.co/MkMrQZY/6-riegel-lawine.png" width="700">
 
 - Linie:
-<img src="https://i.ibb.co/NLwwq36/6-riegel-linie.png">
+<img src="https://i.ibb.co/NLwwq36/6-riegel-linie.png" width="700">
 
 - Lugner:
-<img src="https://i.ibb.co/NsHpgP0/6-riegel-lugner.png">
+<img src="https://i.ibb.co/NsHpgP0/6-riegel-lugner.png" width="700">
 
 ## <a name="7"></a> Soal 7
 **Deskripsi:**: <br>
@@ -521,7 +521,7 @@ apt-get update && apt install nginx php php-fpm -y
 apt-get install lynx -y
 ```
 
-- Melakukan konfigurasi nginx pada `/etc/nginx/sites-available/lb-jarkom` 
+- Melakukan konfigurasi nginx
 ```
 echo 'upstream backend  {  
     server 10.71.3.1; # lawine
@@ -545,20 +545,33 @@ ln -s /etc/nginx/sites-available/lb-jarkom /etc/nginx/sites-enabled
 
 rm -r /etc/nginx/sites-enabled/default
 
+echo 'events {
+    worker_connections 1024;
+}
+
+http {
+    server {
+        listen 80;
+        server_name localhost;
+
+        location / {
+            root /var/www/html;
+            index index.html;
+        }
+    }
+}' > /etc/nginx/nginx.conf
+
 service nginx restart
 ```
 
 **Masuk ke client misalnya `Richter`**
 ```
 apt-get install apache2-utils -y
-ab -n 1000 -c 100 http://riegel.canyon.IT15.com/
-```
-atau 
-```
+
 ab -n 1000 -c 100 http://10.71.2.3/
 ```
 ### Screenshot
-- Brenchmarking hingga 1000 request:
+- Benchmarking hingga 1000 request:
 <img src="https://i.ibb.co/hdLxwdN/7-riegel-1000-100.png">
 
 - Persentase request dan waktu:
@@ -575,6 +588,7 @@ Karena diminta untuk menuliskan grimoire, buat analisis hasil testing dengan 200
 - Algoritma yang akan diterapkan
 `Round Robin`, `Weighted Round Robin` `Least Connection` `IP Hash` dan `Generic Hash`
 
+Laporan `Grimoire` dapat diakses pada link berikut [Grimoire-IT15](https://docs.google.com/document/d/1DEc2g74vpDAS70dvn1CcU58_AMziDf2-aSwddt48F_s/edit?usp=sharing)
 - Instalasi pada worker dan client
 ```
 apt-get install apache2-utils -y
@@ -611,14 +625,14 @@ service nginx restart
 ```
 cat /var/log/nginx/access.log| grep "GET" | wc -l
 cat /var/log/nginx/riegel.canyon.IT15_access.log| grep "GET" | wc -l
-ab -n 200 -c 10 http://riegel.canyon.IT15.com/
+ab -n 200 -c 10 http://10.71.2.3/
 ```
 ### Screenshot
-- Tampilan jumlah GET yang diperoleh dalam proses algoritma:
-<img src="https://i.ibb.co/r23gCQt/round-robbin-get.png">
+- Tampilan Apache Benchmark:
+<img src="https://i.ibb.co/1bGnrWk/8-round-robin-apachebenchmark.png" width="700">
 
 - Hasil HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner:
-<img src="https://i.ibb.co/kqYJPPk/round-robbin-htop.png">
+<img src="https://i.ibb.co/7pQpfHs/8-round-robin-htop.png" width="700">
 
 2. Weighted Round-Robin
 ```
@@ -650,14 +664,14 @@ service nginx restart
 ```
 cat /var/log/nginx/access.log| grep "GET" | wc -l
 cat /var/log/nginx/riegel.canyon.IT15_access.log| grep "GET" | wc -l
-ab -n 200 -c 10 http://riegel.canyon.IT15.com/
+ab -n 200 -c 10 http://10.71.2.3/
 ```
 ### Screenshot:
-- Tampilan jumlah GET yang diperoleh dalam proses algoritma:
-<img src="https://i.ibb.co/kKDmxT1/weighted-roundrobin-get.png">
+- Tampilan Apache Benchmark:
+<img src="https://i.ibb.co/fYrF8Cj/8-weighted-round-robin-apachebranchmark.png" width="700">
 
 - Hasil HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner:
-<img src="https://i.ibb.co/DGKZBL2/weighted-roundrobin-htop.png">
+<img src="https://i.ibb.co/PQV0TKk/8-weighted-round-robin-htop.png" width="700">
 
 3. Least Connection
 ```
@@ -690,14 +704,14 @@ service nginx restart
 ```
 cat /var/log/nginx/access.log| grep "GET" | wc -l
 cat /var/log/nginx/riegel.canyon.IT15_access.log| grep "GET" | wc -l
-ab -n 200 -c 10 http://riegel.canyon.IT15.com/
+ab -n 200 -c 10 http://10.71.2.3/
 ```
 ### Screenshot:
-- Tampilan jumlah GET yang diperoleh dalam proses algoritma:
-<img src="https://i.ibb.co/JkWPKym/least-conn-get.png"> 
+- Tampilan Apache Benchmark:
+<img src="https://i.ibb.co/VN6hJT1/8-least-conn-apachebenchmark.png" width="700">
 
 - Hasil HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner:
-<img src="https://i.ibb.co/QQDwJyZ/least-conn-htop.png">
+<img src="https://i.ibb.co/1nwqMjm/8-least-conn-htop.png" width="700">
 
 4. IP Hash
 ```
@@ -730,14 +744,14 @@ service nginx restart
 ```
 cat /var/log/nginx/access.log| grep "GET" | wc -l
 cat /var/log/nginx/riegel.canyon.IT15_access.log| grep "GET" | wc -l
-ab -n 200 -c 10 http://riegel.canyon.IT15.com/
+ab -n 200 -c 10 http://10.71.2.3/
 ```
 ### Screenshot:
-- Tampilan jumlah GET yang diperoleh dalam proses algoritma:
-<img src="https://i.ibb.co/PMX63T9/ip-hash-get.png"> 
+- Tampilan Apache Benchmark:
+<img src="https://i.ibb.co/2F4845Y/8-ip-hash-apachebenchmark.png" width="700">
 
 - Hasil HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner:
-<img src="https://i.ibb.co/YcBPCyq/ip-hash-htop.png">
+<img src="https://i.ibb.co/qy576Zz/8-ip-hash-htop.png" width="700">
 
 5. Generic Hash
 ```
@@ -770,14 +784,14 @@ service nginx restart
 ```
 cat /var/log/nginx/access.log| grep "GET" | wc -l
 cat /var/log/nginx/riegel.canyon.IT15_access.log| grep "GET" | wc -l
-ab -n 200 -c 10 http://riegel.canyon.IT15.com/
+ab -n 200 -c 10 http://10.71.2.3/
 ```
 ### Screenshot:
-- Tampilan jumlah GET yang diperoleh dalam proses algoritma:
-<img src="https://i.ibb.co/9Yh3Zsp/generichash-get.png">
+- Tampilan Apache Benchmark:
+<img src="https://i.ibb.co/pPMYZvV/8-generic-hash-apachebenchmark.png" width="700">
 
 - Hasil HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner:
-<img src="https://i.ibb.co/P98mHng/generichash-htop.png">
+<img src="https://i.ibb.co/SN41b1r/8-generic-hash-htop.png" width="700">
 
 ## <a name="9"></a> Soal 9
 **Deskripsi:**: <br>
@@ -787,21 +801,21 @@ Dengan algoritma Round Robin, lakukan testing dengan menggunakan 3 worker, 2 wor
 
 - Jalankan command berikut pada `client`
 ```
-ab -n 100 -c 10 http://riegel.canyon.IT15.com/
+ab -n 100 -c 10 http://10.71.2.3/
 ```
 - Jalankan htop pada 3 worker
 Screenshot HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner:
-<img src="https://i.ibb.co/Lr7Yf0D/roundrobin-3worker.png">
+<img src="https://i.ibb.co/54Cbfcj/9-round-robin-3-worker.png" width="700">
 
 - Jalankan htop pada 2 worker
 Stop salah satu worker, misalnya Lugner `service nginx stop`
 Screenshot HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner:
-<img src="https://i.ibb.co/jrfCMJg/roundrobin-2worker.png">
+<img src="https://i.ibb.co/RzbJG5S/9-round-robin-2-worker.png" width="700">
 
 - Jalankan htop pada 1 worker
 Stop 1 worker lagi, misalnya Linie `service nginx stop`. Jadi hanya 1 worker yang berjalan, yaitu Lawine
 Screenshot HTOP dengan node dari atas kiri ke kanan dan lanjut ke kiri bawah adalah Richter, Lawine, Linie, dan Lugner:
-<img src="https://i.ibb.co/Np2bMnm/roundrobin-1worker.png">
+<img src="https://i.ibb.co/BKtwHj4/9-round-robin-1-worker.png" width="700">
 
 ## <a name="10"></a> Soal 10
 **Deskripsi:** <br>
@@ -1396,4 +1410,3 @@ Pada setiap testing lakukan percobaan pada client
 ### Testing
 
 <img width="400" alt="No_20B" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/235ad84f-7d34-4df7-92da-5cc2ff297dc4">
-
