@@ -331,7 +331,7 @@ subnet 10.71.4.0 netmask 255.255.255.0 {
 <img width="400" alt="No_4B" src="https://github.com/Naraduhita/Jarkom-Modul-3-IT15-2023/assets/102397053/a9fd44d3-b575-4e70-a280-098710c15a03">
 
 ## <a name="5"></a> Soal 5
-**Deskripsi:** reverse domain untuk domain utama (abimanyu)
+**Deskripsi:** Lama waktu DHCP server meminjamkan alamat IP kepada Client yang melalui Switch3 selama 3 menit sedangkan pada client yang melalui Switch4 selama 12 menit. Dengan waktu maksimal dialokasikan untuk peminjaman alamat IP selama 96 menit
 
 **Himmel**
 - Diperlukan penggunaan fungsi default-lease-time dan max-lease-time dengan satuan detik.
@@ -1001,7 +1001,7 @@ hwaddress ether da:80:6f:3f:4b:9c
 ```
 
 ## <a name="13"></a> Soal 13
-**Deskripsi:***
+**Deskripsi:**
 Semua data yang diperlukan, diatur pada Denken sebagai database server dan harus dapat diakses oleh Frieren, Flamme, dan Fern.
 
 **Denken**
